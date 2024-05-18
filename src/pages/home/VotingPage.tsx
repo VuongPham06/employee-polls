@@ -6,6 +6,7 @@ import { selectUserById } from '../../redux/slices/users-slice.ts';
 import { selectAuthedUser } from '../../redux/slices/auth-slice.ts';
 import { AnswerId } from '../../api/api-response.ts';
 import { QuestionVoting } from '../../components/QuestionVoting.tsx';
+import { QuestionResult } from '../../components/QuestionResult.tsx';
 
 export const VotingPage = () => {
   const { id } = useParams();
@@ -49,13 +50,23 @@ export const VotingPage = () => {
           }}
         />
 
-        <QuestionVoting
-          questionId={question.id}
-          userId={userId}
-          optionOneText={question.optionOne.text}
-          optionTwoText={question.optionTwo.text}
-          voted={votedOption}
-        />
+        {votedOption === null ? (
+          <QuestionVoting
+            questionId={question.id}
+            userId={userId}
+            optionOneText={question.optionOne.text}
+            optionTwoText={question.optionTwo.text}
+            voted={votedOption}
+          />
+        ) : (
+          <QuestionResult
+            optionOneText={question.optionOne.text}
+            optionTwoText={question.optionTwo.text}
+            optionOneTotalVotes={question.optionOne.votes.length}
+            optionTwoTotalVotes={question.optionTwo.votes.length}
+            votedOption={votedOption}
+          />
+        )}
       </Stack>
     </>
   );
