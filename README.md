@@ -4,14 +4,21 @@
 2. React version 18.3.1
 3. Vite 5.2.10
 
-## Dev command
+## Getting started
 
-1. `yarn dev` run dev mode
-2. `yarn build` build code
-3. `yarn preview` preview code built locally
-4. `yarn lint` check code style
+1. To get started,install [Nodejs](https://nodejs.org/en), then run following command:
+2. `npm install` to build
+3. `npm run dev` to run web app
+4. `npm test` to run test
+
+## About unit test
+
+1. Two unit tests must be present for _saveQuestion(): App.test.tsx with 'Test save question function'
+2. Two unit tests must be present for _saveQuestionAnswer(): App.test.tsx with 'Test save question answer function'
+3. One test must call the toMatchSnapshot() function: LoginForm.test.tsx with 'Snapshot test for LoginForm: should match snapshot'
 
 ## Project Overview
+
 An application that employees can use internally. In order to improve collaboration and transparency within the company, every employee can access the application and create a poll with two proposed solutions. Employees can then vote on these solutions and see which solutions have the most votes. In addition, HR has requested you have a dashboard that lists every employee ordered by the number of polls they've created and answered. To give employees incentive to use your application, HR will give a prize each quarter for the top employees who have created and answered the most polls.
 
 In the "Employee Polls" Project, An employee create polls for coworkers. The process goes like this: An employee is asked a question in the form: “Would you rather [option A] or [option B] ?”. Answering "neither" or "both" is not possible.
@@ -19,6 +26,7 @@ In the "Employee Polls" Project, An employee create polls for coworkers. The pro
 Users will be able to answer polls, see which polls they haven’t answered, see how other people have voted, post polls, and see the ranking of users on the leaderboard.
 
 ## App Functionality
+
 The person using application should have a way of impersonating/logging in as an existing user. Application should work correctly regardless of which user is selected. Once the user logs in, the home page should be shown.
 
 Information about the logged in user should appear on the page. If someone tries to navigate anywhere by entering the address in the address bar, the user is asked to sign in and then the requested page is shown. The application allows the user to log out and log back in.
@@ -56,12 +64,14 @@ Users should be ordered in descending order based on the sum of the number of qu
 The user should be able to navigate to the leaderboard, to a specific question, and to the form that allows the user to create a new poll both from within the app and by typing in the address into the address bar. To make sure we’re showing the data that is relevant to the user, the application should require the user to be signed in order to access those pages.
 
 ## App Architecture
+
 For this application, most of the application’s state should be managed by Redux. 
 Application’s store should be the source of truth, and components should read the necessary state from the store instead of having their own versions of the same state. There should be no direct API calls in components’ lifecycle methods, and updates should be triggered by dispatching action creators.
 
 Application’s code should be structured and organized in a logical way, and components should be modular and reusable.
 
 ## Unit Testing
+
 10 unit tests for the project:
 
 1. For the api.ts file, write an async unit test for saveQuestion to verify that the saved question is returned and all expected fields are populated when correctly formatted data is passed to the function.
